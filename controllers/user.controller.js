@@ -8,7 +8,7 @@ export const register = async (req, res) => {
   try {
     const { fullname, email, phoneNumber, password, adharcard, pancard, role } = req.body;
 
-    if (!fullname || !email || !phoneNumber || !password || !role || !pancard || !adharcard) {
+    if (!fullname || !email || !phoneNumber || !password || !role) {
       return res.status(400).json({
         message: "Missing required fields",
         success: false,
