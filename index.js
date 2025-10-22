@@ -27,7 +27,7 @@ const PORT = process.env.PORT || 5001;
 app.use("/api/user", userRoute);
 app.use("/api/company", companyRoute);
 app.use("/api/job", jobRoute);
-app.use("/api/application", applicationRoute);
+app.use("/api/application", applicationRoute)
 
 app.listen(PORT, () => {
   connectDB();
