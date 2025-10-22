@@ -23,32 +23,32 @@ export const register = async (req, res) => {
       });
     }
 
-    const existingAdharcard = await User.findOne({ adharcard });
-    if (existingAdharcard) {
-      return res.status(400).json({
-        message: "Adhar number already exists",
-        success: false,
-      });
-    }
+    // const existingAdharcard = await User.findOne({ adharcard });
+    // if (existingAdharcard) {
+    //   return res.status(400).json({
+    //     message: "Adhar number already exists",
+    //     success: false,
+    //   });
+    // }
 
-    const existingPancard = await User.findOne({ pancard });
-    if (existingPancard) {
-      return res.status(400).json({
-        message: "Pan number already exists",
-        success: false,
-      });
-    }
+    // const existingPancard = await User.findOne({ pancard });
+    // if (existingPancard) {
+    //   return res.status(400).json({
+    //     message: "Pan number already exists",
+    //     success: false,
+    //   });
+    // }
 
-    const file = req.file;
-    if (!file) {
-      return res.status(400).json({
-        message: "Profile image is required",
-        success: false,
-      });
-    }
+    // const file = req.file;
+    // if (!file) {
+    //   return res.status(400).json({
+    //     message: "Profile image is required",
+    //     success: false,
+    //   });
+    // }
 
-    const fileUri = getDataUri(file);
-    const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
+    // const fileUri = getDataUri(file);
+    // const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -56,13 +56,13 @@ export const register = async (req, res) => {
       fullname,
       email,
       phoneNumber,
-      adharcard,
-      pancard,
+      // adharcard,
+      // pancard,
       password: hashedPassword,
       role,
-      profile: {
-        profilePhoto: cloudResponse.secure_url,
-      },
+      // profile: {
+      //   profilePhoto: cloudResponse.secure_url,
+      // },
     });
 
     await newUser.save();
