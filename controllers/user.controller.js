@@ -23,6 +23,15 @@ export const register = async (req, res) => {
       });
     }
 
+        const phoneNum = await User.findOne({ phoneNumber });
+    if (phoneNum) {
+      return res.status(400).json({
+        message: "PhoneNumber already exists",
+        success: false,
+      });
+    }
+
+
     // const existingAdharcard = await User.findOne({ adharcard });
     // if (existingAdharcard) {
     //   return res.status(400).json({
@@ -142,6 +151,7 @@ export const login = async (req, res) => {
       .json({
         message: `Welcome back ${user.fullname}`,
         user: sanitizedUser,
+        token,
         success: true,
       });
   } catch (error) {
