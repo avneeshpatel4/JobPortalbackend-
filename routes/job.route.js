@@ -1,7 +1,7 @@
 import express from "express";
 import authenticatedToken from "../middleware/isAuthenticated.js";
 import {
-  getAdminjobs,
+  getAdminJobs,
   getAllJobs,
   getJobById,
   postJob,
@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.route("/post").post(authenticatedToken, postJob);
 router.route("/get").get(authenticatedToken, getAllJobs);
-router.route("/getadminJobs").get(authenticatedToken, getAdminjobs);
+router.route("/getadminJobs").get(authenticatedToken, getAdminJobs);
 router.route("/get/:id").get(authenticatedToken, getJobById);
 
 export default router;
